@@ -1,0 +1,14 @@
+body {
+    background-color: gold;
+}
+.Open {
+    color: red;
+    justify-content: center;
+    align-items: center;
+    font-size: 400%;
+    font-style: oblique;
+    background-color: gold
+}
+.img{
+    height:1000%;
+}

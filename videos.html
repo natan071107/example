@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Keluarga</title>
+    <style>
+        body {
+            background-color: #87CEEB; /* Warna biru untuk latar belakang */
+            font-family: Arial, sans-serif;
+            color: #fff; /* Warna teks putih */
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        #uploadedVideo {
+            margin-top: 20px;
+            max-width: 100%;
+            border: 5px solid #fff;
+        }
+        input, button {
+            font-size: 1em;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50; /* Warna hijau untuk tombol */
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Keluarga</h1>
+    <p>Silakan upload video keluarga Sianturi:</p>
+    <form id="uploadForm">
+        <input type="file" id="fileInput" accept="video/*" />
+        <button type="button" id="uploadButton">Upload Video</button>
+    </form>
+    <div id="result">
+        <video id="uploadedVideo" controls style="display: none;"></video>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById("uploadButton").addEventListener("click", () => {
+            const fileInput = document.getElementById("fileInput");
+            const file = fileInput.files[0]; // Mendapatkan file video dari input
+
+            if (!file) {
+                document.getElementById("message").innerText = "Silakan pilih video keluarga terlebih dahulu.";
+                return;
+            }
+
+            // Mengecek apakah file berupa video
+            if (!file.type.startsWith("video/")) {
+                document.getElementById("message").innerText = "Hanya file video yang dapat diupload.";
+                return;
+            }
+
+            // Membuat URL sementara untuk file video
+            const fileURL = URL.createObjectURL(file);
+
+            // Menampilkan video di halaman
+            const videoElement = document.getElementById("uploadedVideo");
+            videoElement.src = fileURL;
+            videoElement.style.display = "block";
+            document.getElementById("message").innerText = `Video "${file.name}" berhasil diupload dan ditampilkan.`;
+        });
+    </script>
+</body>
+</html>
+
+        

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            background-color: #87CEEB; /* Latar belakang biru */
+            font-family: Arial, sans-serif;
+            color: #fff; /* Warna teks putih */
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            padding: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4CAF50; /* Warna hijau untuk tombol */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #comments {
+            margin-top: 20px;
+            text-align: left;
+            background-color: #ffffff22; /* Warna transparan untuk latar komentar */
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .comment {
+            background-color: #ffffff44;
+            color: #000;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Home</h1>
+    <p>Silakan tulis komentar keluarga Sianturi di bawah:</p>
+    <textarea id="commentInput" placeholder="Tulis komentar di sini..."></textarea><br>
+    <button id="submitButton">Upload Komentar</button>
+    <div id="comments">
+        <h2>Komentar Keluarga:</h2>
+    </div>
+
+    <script>
+        // Event listener untuk tombol upload
+        document.getElementById("submitButton").addEventListener("click", () => {
+            const commentInput = document.getElementById("commentInput");
+            const commentText = commentInput.value.trim(); // Ambil nilai komentar
+
+            if (!commentText) {
+                alert("Silakan isi komentar terlebih dahulu!");
+                return;
+            }
+
+            // Membuat elemen baru untuk menampilkan komentar
+            const commentDiv = document.createElement("div");
+            commentDiv.className = "comment";
+            commentDiv.innerText = commentText;
+
+            // Menambahkan komentar ke daftar
+            const commentsSection = document.getElementById("comments");
+            commentsSection.appendChild(commentDiv);
+
+            // Mengosongkan input setelah upload
+            commentInput.value = "";
+        });
+    </script>
+</body>
+</html>
